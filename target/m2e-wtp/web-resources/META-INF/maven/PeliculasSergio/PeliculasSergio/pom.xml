@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>AppAgenda</groupId>
-  <artifactId>AppAgenda</artifactId>
+  <groupId>PeliculasSergio</groupId>
+  <artifactId>PeliculasSergio</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <dependencies>
@@ -15,6 +15,11 @@
     	<artifactId>hibernate-core</artifactId>
     	<version>5.4.15.Final</version>
     </dependency>
+    <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.15</version>
+        </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -22,7 +27,7 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
-          <release>11</release>
+          <release>17</release>
         </configuration>
       </plugin>
       <plugin>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sign Up</title>
+<link href="CSS/Form.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	 <div class="encabezado">
+        <div class="rojo"></div>
+            <div class="rosa">
+                <img src="CSS/IMAGES/2038509.png"  width=4% id="headerImage">
+            </div>
+    </div>
+
+    <div id="container" align="center">
+        <div id="formDiv">
+            <h1>Sing Up</h1>
+            <form action="SingUpUser" method="post">
+					<h4>Username <input type="text" name="username" required></h4>
+					<h4>Password <input type="password" name="password" required></h4>
+					<h4>Nombre <input type="text" name="nombre" required></h4>
+					<h4>Apellido <input type="text" name="apellido" required></h4>
+					<h4>Fecha de Nacimiento</h4>
+					<input type="date" name="fechaNacimiento" required>
+                   <p>
+                        Hombre<input type="radio" name="genero" value="male">
+                        Mujer<input type="radio" name="genero" value="female" checked>
+                    </p>
+                    
+					<br>
+					<br>
+					<button name="confirm">Confirm</button>
+					<a href="Index.html"><button name="back" type="button">Back</button></a>
+			</form>
+        </div>
+    </div>
+</body>
+</html>

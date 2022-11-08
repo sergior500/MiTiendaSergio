@@ -2,6 +2,7 @@ package com.jacaranda.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.jacaranda.java.Peliculas;
 import com.jacaranda.java.UserUtils;
+import com.jacaranda.java.CRUD.PeliculasCRUD;
 
 /**
  * Servlet implementation class ServletPeliculas
@@ -52,8 +55,43 @@ public class ServletPeliculas extends HttpServlet {
 	         	session.setAttribute("login", "True");
 	         	session.setAttribute("usuario", usuario);
 	         	session.setAttribute("password",password);
-	    		response.sendRedirect("alegria.jsp");
-	            		
+	    		
+	         	response.setContentType("text/html;charset=UTF-8");
+	         	PrintWriter out = response.getWriter();
+	         	try {
+	    			out.println("<!DOCTYPE html>"
+	    					+ "<html>"
+	    					+ "<head>"
+	    					+ "<meta charset=\"UTF-8\">"
+	    					+ "<title>Peliculas</title>"
+	    					+ "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/styleTablePage.css\">"
+	    					+ "</head>"
+	    					+ "<body>"
+	    					+"<div>"
+	    					+ "<table>"
+	    					+ "<tr>"
+	    					+ "<th>Id</th>"
+	    					+ "<th>title</th>"
+	    					+ "<th>Description</th>"
+	    					+ "<th>Price</th>"
+	    					+ "<th>Category_id</th>"
+	    					+ "</tr>");
+	    			
+	    			List<Peliculas> peliculasList = PeliculasCRUD.loadList();
+	    			
+	    			for(Peliculas pelicula : peliculasList){
+	    				
+	    				out.println("<tr>"
+	    						+ "<td>"+pelicula.getId()+"</td>"
+    							+ "<td>"+pelicula.getTitulo()+"</td>"
+    							+ "<td>"+pelicula.getDescripcion()+"</td>"
+    							+ "<td>"+pelicula.getPrecio()+"</td>"
+    							+ "<td>"+pelicula.getCategoria().getNombre()+"</td>");
+	    				
+	    			}
+	         	}catch (Exception e) {
+					System.out.println("sisisisisisi");
+				}
 	       	} else { 
 	       		response.sendRedirect("Error.html");
 	  	 	}

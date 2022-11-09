@@ -49,6 +49,9 @@ public class ServletPeliculas extends HttpServlet {
 	            	
 	   	HttpSession session = request.getSession();
 	   	
+	   	response.setContentType("text/html;charset=UTF-8");
+     	PrintWriter out = response.getWriter();
+	   	
 	    if(usuario !=null && password !=null){
 	    	if(UserUtils.sessionValid(password, usuario)){
 	    		
@@ -56,15 +59,14 @@ public class ServletPeliculas extends HttpServlet {
 	         	session.setAttribute("usuario", usuario);
 	         	session.setAttribute("password",password);
 	    		
-	         	response.setContentType("text/html;charset=UTF-8");
-	         	PrintWriter out = response.getWriter();
+	         	
 	         	try {
 	    			out.println("<!DOCTYPE html>"
 	    					+ "<html>"
 	    					+ "<head>"
 	    					+ "<meta charset=\"UTF-8\">"
 	    					+ "<title>Peliculas</title>"
-	    					+ "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/styleTablePage.css\">"
+	    					+ "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/mvp.css\">"
 	    					+ "</head>"
 	    					+ "<body>"
 	    					+"<div>"
@@ -93,7 +95,19 @@ public class ServletPeliculas extends HttpServlet {
 					System.out.println("sisisisisisi");
 				}
 	       	} else { 
-	       		response.sendRedirect("Error.html");
+	       		out.println("<!DOCTYPE html>\n"
+	       				+ "<html>\n"
+	       				+ "<head>\n"
+	       				+ "<meta charset=\"ISO-8859-1\">\n"
+	       				+ "<title>Error</title>\n"
+	       				+ " <link rel=\"stylesheet\" href=\"CSS/Error.css\">\n"
+	       				+ "</head>\n"
+	       				+ "<body>\n"
+	       				+ "	<div id=\"div1\" align=\"center\">\n"
+	       				+ "		<a href=\"Index.html\"><img src=\"CSS/IMAGES/error.png\"></a>\n"
+	       				+ "	</div>\n"
+	       				+ "</body>\n"
+	       				+ "</html>");
 	  	 	}
 		 }
 

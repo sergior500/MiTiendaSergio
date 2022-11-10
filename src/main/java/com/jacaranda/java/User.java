@@ -79,6 +79,7 @@ public class User {
 		this.genero = genero;
 	}
 	public boolean isAdmin() {
+		
 		return admin;
 	}
 	public void setAdmin(boolean admin) {

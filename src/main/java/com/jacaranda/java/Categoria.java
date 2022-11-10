@@ -31,6 +31,13 @@ public class Categoria {
 		this.descripcion = descripcion;
 		this.peliculas = null;
 	}
+	
+	public Categoria(String nombre, String descripcion, List<com.jacaranda.java.Peliculas> peliculas) {
+		super();
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.peliculas = null;
+	}
 
 	public int getId() {
 		return id;

@@ -5,14 +5,16 @@ import java.time.LocalDate;
 import org.hibernate.Session;
 
 import com.jacaranda.java.User;
+import com.jacaranda.java.UserUtils;
 
 
 public class UserCRUD {
 
 	public static User getUser (String username) {
+
 		Session session = BBDDConnection.BDSession();
 		User usuario = session.get(User.class, username);
-				
+
 		return usuario;
 	}
 	

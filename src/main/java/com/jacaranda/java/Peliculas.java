@@ -33,6 +33,14 @@ public class Peliculas {
 		this.precio = precio;
 		this.categoria = categoria;
 	}
+	
+	public Peliculas(String titulo, String descripcion, double precio, Categoria categoria) {
+		super();
+		this.titulo = titulo;
+		this.descripcion = descripcion;
+		this.precio = precio;
+		this.categoria = categoria;
+	}
 
 	public int getId() {
 		return id;

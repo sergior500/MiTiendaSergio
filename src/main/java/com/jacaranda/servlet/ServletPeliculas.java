@@ -2,6 +2,7 @@ package com.jacaranda.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -14,7 +15,9 @@ import javax.servlet.http.HttpSession;
 
 import com.jacaranda.java.Peliculas;
 import com.jacaranda.java.UserUtils;
+import com.jacaranda.java.CRUD.BBDDConnection;
 import com.jacaranda.java.CRUD.PeliculasCRUD;
+import com.jacaranda.java.CRUD.UserCRUD;
 
 /**
  * Servlet implementation class ServletPeliculas
@@ -44,73 +47,70 @@ public class ServletPeliculas extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String usuario = request.getParameter("username");
-	   	String password = request.getParameter("password");
+		HttpSession session = request.getSession();
+		String usuario = (String) session.getAttribute("usuario");
+	   	String password = (String) session.getAttribute("password");
 	            	
-	   	HttpSession session = request.getSession();
+	   	
 	   	
 	   	response.setContentType("text/html;charset=UTF-8");
      	PrintWriter out = response.getWriter();
-	   	
-	    if(usuario !=null && password !=null){
-	    	if(UserUtils.sessionValid(password, usuario)){
-	    		
-	         	session.setAttribute("login", "True");
-	         	session.setAttribute("usuario", usuario);
-	         	session.setAttribute("password",password);
-	    		
-	         	
-	         	try {
-	    			out.println("<!DOCTYPE html>"
-	    					+ "<html>"
-	    					+ "<head>"
-	    					+ "<meta charset=\"UTF-8\">"
-	    					+ "<title>Peliculas</title>"
-	    					+ "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/mvp.css\">"
-	    					+ "</head>"
-	    					+ "<body>"
-	    					+"<div>"
-	    					+ "<table>"
-	    					+ "<tr>"
-	    					+ "<th>Id</th>"
-	    					+ "<th>title</th>"
-	    					+ "<th>Description</th>"
-	    					+ "<th>Price</th>"
-	    					+ "<th>Category_id</th>"
-	    					+ "</tr>");
-	    			
-	    			List<Peliculas> peliculasList = PeliculasCRUD.loadList();
-	    			
-	    			for(Peliculas pelicula : peliculasList){
-	    				
-	    				out.println("<tr>"
-	    						+ "<td>"+pelicula.getId()+"</td>"
-    							+ "<td>"+pelicula.getTitulo()+"</td>"
-    							+ "<td>"+pelicula.getDescripcion()+"</td>"
-    							+ "<td>"+pelicula.getPrecio()+"</td>"
-    							+ "<td>"+pelicula.getCategoria().getNombre()+"</td>");
-	    				
-	    			}
-	         	}catch (Exception e) {
-					System.out.println("sisisisisisi");
-				}
-	       	} else { 
-	       		out.println("<!DOCTYPE html>\n"
-	       				+ "<html>\n"
-	       				+ "<head>\n"
-	       				+ "<meta charset=\"ISO-8859-1\">\n"
-	       				+ "<title>Error</title>\n"
-	       				+ " <link rel=\"stylesheet\" href=\"CSS/Error.css\">\n"
-	       				+ "</head>\n"
-	       				+ "<body>\n"
-	       				+ "	<div id=\"div1\" align=\"center\">\n"
-	       				+ "		<a href=\"Index.html\"><img src=\"CSS/IMAGES/error.png\"></a>\n"
-	       				+ "	</div>\n"
-	       				+ "</body>\n"
-	       				+ "</html>");
-	  	 	}
-		 }
+		out.println(session.getAttribute("usuario"));
+		    if(usuario ==null && password ==null){
+		    	usuario = request.getParameter("username");
+			   	password = request.getParameter("password");
+		    }  
+		    	if(UserUtils.sessionValid(password, usuario)){
+		    		
+		         	session.setAttribute("login", "True");
+		         	session.setAttribute("usuario", usuario);
+		         	session.setAttribute("password",password);
+		    		
+		         	
+		         	try {
+		    			out.println("<!DOCTYPE html>"
+		    					+ "<html>"
+		    					+ "<head>"
+		    					+ "<meta charset=\"UTF-8\">"
+		    					+ "<title>Peliculas</title>"
+		    					+ "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/mvp.css\">"
+		    					+ "</head>"
+		    					+ "<body>"
+		    					+"<div>"
+		    					+ "<table>"
+		    					+ "<tr>"
+		    					+ "<th>Id</th>"
+		    					+ "<th>title</th>"
+		    					+ "<th>Description</th>"
+		    					+ "<th>Price</th>"
+		    					+ "<th>Category_id</th>");
+				    			if(UserCRUD.getUser(usuario).isAdmin()) {
+			    					out.println("<th class=\"transparent\">"
+			    							+ "<a href=\"formProducto.jsp\">"
+			    							+ "hola<img src=\"IMAGES/mas.png\"  width=5%></a></td>");
+			    					
+			    				}
+		    					out.println("</tr>");
+		    			
+		    			List<Peliculas> peliculasList = PeliculasCRUD.loadList();
+		    			
+		    			for(Peliculas pelicula : peliculasList){
+		    				
+		    				out.println("<tr>"
+		    						+ "<td>"+pelicula.getId()+"</td>"
+	    							+ "<td>"+pelicula.getTitulo()+"</td>"
+	    							+ "<td>"+pelicula.getDescripcion()+"</td>"
+	    							+ "<td>"+pelicula.getPrecio()+"</td>"
+	    							+ "<td>"+pelicula.getCategoria().getNombre()+"</td>");
+		    				
+		    			}
+		         	}catch (Exception e) {
+		         		out.println(UserUtils.errorHtml());
+					}
+		       	} else { 
+		       		out.println(UserUtils.errorHtml());
+		  	 	}
+			 }
 
-	}
-
+	
 }

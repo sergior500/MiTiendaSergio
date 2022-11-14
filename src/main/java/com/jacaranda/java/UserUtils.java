@@ -33,7 +33,7 @@ public class UserUtils {
    				+ "</head>\n"
    				+ "<body>\n"
    				+ "	<div id=\"div1\" align=\"center\">\n"
-   				+ "	<a href=\"Index.html\"><img src=\"CSS/IMAGES/error.png\"></a>\n"
+   				+ "	<a href=\"Index.html\"><img src=\"IMAGES/error.png\"></a>\n"
    				+ "	</div>\n"
    				+ "</body>\n"
    				+ "</html>";

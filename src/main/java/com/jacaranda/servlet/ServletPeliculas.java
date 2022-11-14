@@ -39,7 +39,7 @@ public class ServletPeliculas extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append(UserUtils.errorHtml());
 	}
 
 	/**
@@ -55,10 +55,16 @@ public class ServletPeliculas extends HttpServlet {
 	   	
 	   	response.setContentType("text/html;charset=UTF-8");
      	PrintWriter out = response.getWriter();
-		out.println(session.getAttribute("usuario"));
+		
 		    if(usuario ==null && password ==null){
 		    	usuario = request.getParameter("username");
 			   	password = request.getParameter("password");
+			   	
+			   	out.println(usuario+","+password);
+			   	
+			   	if(usuario == null && password == null) {
+			   		out.println(UserUtils.errorHtml());
+			   	}
 		    }  
 		    	if(UserUtils.sessionValid(password, usuario)){
 		    		

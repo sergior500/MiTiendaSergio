@@ -1,3 +1,4 @@
+<%@page import="com.jacaranda.java.UserUtils"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%=session.getAttribute("usuario")%>
+	<%if(session.getAttribute("usuario") !=  null){%>
 	<h1>Añadir Pelicula</h1>
             
             <form action="create.jsp" method="post">
@@ -29,5 +30,9 @@
 			 <form action="ServletPeliculas" method="post">
 				<button>Back</button>
 			</form>
+	<%}else{
+			UserUtils.errorHtml();
+		}%>
+	
 </body>
 </html>

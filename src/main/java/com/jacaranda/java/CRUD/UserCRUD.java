@@ -1,6 +1,7 @@
 package com.jacaranda.java.CRUD;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.hibernate.Session;
 
@@ -18,14 +19,14 @@ public class UserCRUD {
 		return usuario;
 	}
 	
-	public static void saveUser(String username, String password, String nombre, String apellido, LocalDate fechaNacimiento, String genero, boolean admin) {
+	public static void saveUser(String username, String password, String nombre, String apellido, LocalDateTime fechaNacimiento, String genero, boolean admin) {
 		Session session = BBDDConnection.BDSession();
 		User usuario = new User(nombre, password, nombre, apellido, fechaNacimiento, genero, admin);
 		session.getTransaction().begin();
 		session.save(usuario);
 		session.getTransaction().commit();
 	}
-	public static void updateUser(String username, String password, String nombre, String apellido, LocalDate fechaNacimiento, String genero, boolean admin) {
+	public static void updateUser(String username, String password, String nombre, String apellido, LocalDateTime fechaNacimiento, String genero, boolean admin) {
 		Session session = BBDDConnection.BDSession();
 		User usuario = (User) session.get(User.class, username);
 		usuario.setContrasena(password);

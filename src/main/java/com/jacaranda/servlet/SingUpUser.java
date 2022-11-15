@@ -2,6 +2,8 @@ package com.jacaranda.servlet;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,14 +46,21 @@ public class SingUpUser extends HttpServlet {
 		String password = request.getParameter("password");
 		String nombre = request.getParameter("nombre");
 		String apellido = request.getParameter("apellido");
-		LocalDate fechaNacimiento = LocalDate.parse(request.getParameter("fechaNacimiento"));
+		LocalDateTime fechaNacimiento = null;
+		try {
+			fechaNacimiento = LocalDateTime.of(LocalDate.parse(request.getParameter("fechaNacimiento")), LocalTime.now());
+		}catch (Exception e) {
+			response.getWriter().append((UserUtils.errorHtml()));
+		}
 		String genero = request.getParameter("genero");
-		
-		if(UserCRUD.getUser(username)==null){
-			UserCRUD.saveUser(username,UserUtils.encript(password),nombre,apellido,fechaNacimiento,genero,false);
+		if(username == null && password == null && nombre == null && apellido == null && genero == null) {
+			response.getWriter().append((UserUtils.errorHtml()));
+		}
+		if(UserCRUD.getUser(username)==null && password.length()>=6){
+			UserCRUD.saveUser(username.trim(),UserUtils.encript(password.trim()),nombre.trim(),apellido.trim(),fechaNacimiento,genero.trim(),false);
 			response.sendRedirect("Index.html");
 		}else{
-			response.sendRedirect("Error.html");
+			UserUtils.errorHtml();
 		}
 		
 		

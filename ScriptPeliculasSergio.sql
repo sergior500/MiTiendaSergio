@@ -28,7 +28,7 @@ CONSTRAINT FK_PELICULAS FOREIGN KEY (id_categoria) REFERENCES categoria(id) ON D
 
 CREATE TABLE sergioPeliculas.USUARIO(
 NombreUsuario VARCHAR(20),
-contrasena VARCHAR(50),
+contrasena VARCHAR(33),
 nombre VARCHAR(20),
 apellido VARCHAR(20),
 fechaNacimiento date,

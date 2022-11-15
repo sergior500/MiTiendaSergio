@@ -24,6 +24,7 @@ public class UserUtils {
 		return test;
 	}
 	public static String errorHtml() {
+		//POR HACER ("cambiar metodo para que reciba el error que quieras mostrar")
 		String error= "<!DOCTYPE html>\n"
    				+ "<html>\n"
    				+ "<head>\n"

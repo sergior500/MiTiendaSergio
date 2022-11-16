@@ -1,12 +1,11 @@
 package com.jacaranda.java.CRUD;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import org.hibernate.Session;
 
 import com.jacaranda.java.User;
-import com.jacaranda.java.UserUtils;
+
 
 
 public class UserCRUD {
@@ -19,14 +18,19 @@ public class UserCRUD {
 		return usuario;
 	}
 	
-	public static void saveUser(String username, String password, String nombre, String apellido, LocalDateTime fechaNacimiento, String genero, boolean admin) {
+	public static void saveUser(String username, String password, String nombre, String apellido, LocalDate fechaNacimiento, String genero, boolean admin) {
 		Session session = BBDDConnection.BDSession();
 		User usuario = new User(nombre, password, nombre, apellido, fechaNacimiento, genero, admin);
-		session.getTransaction().begin();
-		session.save(usuario);
-		session.getTransaction().commit();
+		try {
+			session.getTransaction().begin();
+			session.save(usuario);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+		}
+		
 	}
-	public static void updateUser(String username, String password, String nombre, String apellido, LocalDateTime fechaNacimiento, String genero, boolean admin) {
+	public static void updateUser(String username, String password, String nombre, String apellido, LocalDate fechaNacimiento, String genero, boolean admin) {
 		Session session = BBDDConnection.BDSession();
 		User usuario = (User) session.get(User.class, username);
 		usuario.setContrasena(password);
@@ -35,16 +39,28 @@ public class UserCRUD {
 		usuario.setFechaNacimiento(fechaNacimiento);
 		usuario.setGenero(genero);
 		usuario.setAdmin(admin);
-		session.getTransaction().begin();
-		session.update(usuario);
-		session.getTransaction().commit();
+		
+		try {
+			session.getTransaction().begin();
+			session.update(usuario);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+		}
+		
+		
 	}
 	
 	public static void deleteUser(String username) {
 		Session session = BBDDConnection.BDSession();
 		User usuario = (User) session.get(User.class, username);
-		session.getTransaction().begin();
-		session.delete(usuario);
-		session.getTransaction().commit();
+		try {
+			session.getTransaction().begin();
+			session.delete(usuario);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+		}
+		
 	}
 }

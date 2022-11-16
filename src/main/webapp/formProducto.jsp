@@ -12,17 +12,18 @@
 	<h1>Añadir Pelicula</h1>
             
             <form action="create.jsp" method="post">
-				<h4>Descripcion</h4>
-				<input type="text" name="description" maxlength="30" required>
-				<h4>Fecha </h4>
-				<input type="date" name="date" required>
-                   <h4>Hora</h4>
-                   <input type="text" name="hour" maxlength="5" required>
-                   <h4>Activo</h4>
-                   <p>
-                       Yes<input type="radio" name="YN" value="yes">
-                       No<input type="radio" name="YN" value="no" checked>
-                   </p>
+				<h4>Title</h4>
+				<input type="text" name="title" maxlength="30" required>
+				<h4>Description</h4>
+				<input type="text" name="description" required>
+                <h4>Price</h4>
+                <input type="number" step="any" name="price" required>
+                <h4>Category</h4>
+                <select>
+                	<%
+                		
+                	%>
+                </select>
 				<br>
 				<br>
 				<button type="submit" name="Sing Up">Create Pelicula</button>

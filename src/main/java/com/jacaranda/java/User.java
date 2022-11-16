@@ -1,12 +1,9 @@
 package com.jacaranda.java;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity (name = "USUARIO")
@@ -21,7 +18,7 @@ public class User {
 	@Column(name = "apellido")
 	private String apellido;
 	@Column(name = "fechaNacimiento")
-	private LocalDateTime fechaNacimiento;
+	private LocalDate fechaNacimiento;
 	@Column(name = "genero")
 	private String genero;
 	@Column(name = "admin")
@@ -31,7 +28,7 @@ public class User {
 		
 	}
 	
-	public User(String nombreUsuario, String contrasena, String nombre, String apellido, LocalDateTime fechaNacimiento,
+	public User(String nombreUsuario, String contrasena, String nombre, String apellido, LocalDate fechaNacimiento,
 			String genero, boolean admin) {
 		super();
 		this.NombreUsuario = nombreUsuario;
@@ -67,10 +64,10 @@ public class User {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public LocalDateTime getFechaNacimiento() {
+	public LocalDate getFechaNacimiento() {
 		return fechaNacimiento;
 	}
-	public void setFechaNacimiento(LocalDateTime fechaNacimiento) {
+	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	public String getGenero() {

@@ -2,10 +2,8 @@ package com.jacaranda.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import com.jacaranda.java.Peliculas;
 import com.jacaranda.java.UserUtils;
-import com.jacaranda.java.CRUD.BBDDConnection;
 import com.jacaranda.java.CRUD.PeliculasCRUD;
 import com.jacaranda.java.CRUD.UserCRUD;
 
@@ -48,8 +45,8 @@ public class ServletPeliculas extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		String usuario = (String) session.getAttribute("usuario");
-	   	String password = (String) session.getAttribute("password");
+		String usuario = request.getParameter("username");
+	   	String password = request.getParameter("password");
 	            	
 	   	
 	   	
@@ -57,8 +54,8 @@ public class ServletPeliculas extends HttpServlet {
      	PrintWriter out = response.getWriter();
 		
 		    if(usuario ==null && password ==null){
-		    	usuario = request.getParameter("username");
-			   	password = request.getParameter("password");
+		    	usuario = (String) session.getAttribute("usuario");
+			   	password = (String) session.getAttribute("password");
 			   	
 			   	out.println(usuario+","+password);
 			   	
@@ -93,10 +90,13 @@ public class ServletPeliculas extends HttpServlet {
 				    			if(UserCRUD.getUser(usuario).isAdmin()) {
 			    					out.println("<th class=\"transparent\">"
 			    							+ "<a href=\"formProducto.jsp\">"
-			    							+ "hola<img src=\"IMAGES/mas.png\"  width=5%></a></td>");
+			    							+ "<img src=\"IMAGES/mas.png\"  width=5%></a></th>");
 			    					
 			    				}
-		    					out.println("</tr>");
+		    					out.println("<th class=\"transparent\">\n"
+		    							+ "<a href=\"Index.jsp\">\n"
+		    							+ "<img src=\"IMAGES/logout.png\"  width=5%></a></th>"
+		    							+ "</tr>");
 		    			
 		    			List<Peliculas> peliculasList = PeliculasCRUD.loadList();
 		    			

@@ -2,8 +2,6 @@ package com.jacaranda.servlet;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jacaranda.java.User;
 import com.jacaranda.java.UserUtils;
 import com.jacaranda.java.CRUD.UserCRUD;
 
@@ -46,22 +43,27 @@ public class SingUpUser extends HttpServlet {
 		String password = request.getParameter("password");
 		String nombre = request.getParameter("nombre");
 		String apellido = request.getParameter("apellido");
-		LocalDateTime fechaNacimiento = null;
+		LocalDate fechaNacimiento = null;
 		try {
-			fechaNacimiento = LocalDateTime.of(LocalDate.parse(request.getParameter("fechaNacimiento")), LocalTime.now());
+			fechaNacimiento = LocalDate.parse(request.getParameter("fechaNacimiento"));
 		}catch (Exception e) {
 			response.getWriter().append((UserUtils.errorHtml()));
 		}
 		String genero = request.getParameter("genero");
-		if(username == null && password == null && nombre == null && apellido == null && genero == null) {
+		
+		if((username != null || !username.isEmpty()) && (password != null || !password.isEmpty()) && (nombre != null || !nombre.isEmpty()) 
+				&& (apellido != null || !apellido.isEmpty()) && (genero != null || !genero.isEmpty())) {
+			if(UserCRUD.getUser(username)==null && password.length()>=6){
+				UserCRUD.saveUser(username.trim(),UserUtils.encript(password.trim()),nombre.trim(),apellido.trim(),fechaNacimiento,genero.trim(),false);
+				response.sendRedirect("Index.html");
+			}else{
+				response.getWriter().append((UserUtils.errorHtml()));
+			}
+			
+		}else {
 			response.getWriter().append((UserUtils.errorHtml()));
 		}
-		if(UserCRUD.getUser(username)==null && password.length()>=6){
-			UserCRUD.saveUser(username.trim(),UserUtils.encript(password.trim()),nombre.trim(),apellido.trim(),fechaNacimiento,genero.trim(),false);
-			response.sendRedirect("Index.html");
-		}else{
-			UserUtils.errorHtml();
-		}
+		
 		
 		
 	}

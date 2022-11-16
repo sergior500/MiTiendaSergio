@@ -36,7 +36,7 @@ public class ServletPeliculas extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append(UserUtils.errorHtml());
+		response.getWriter().append(UserUtils.errorHtml("No encuentramos lo que buscas","405"));
 	}
 
 	/**
@@ -45,22 +45,22 @@ public class ServletPeliculas extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		String usuario = request.getParameter("username");
-	   	String password = request.getParameter("password");
-	            	
-	   	
+	
+			String usuario = request.getParameter("username");
+		   	String password = request.getParameter("password");
+			   	
 	   	
 	   	response.setContentType("text/html;charset=UTF-8");
      	PrintWriter out = response.getWriter();
 		
-		    if(usuario ==null && password ==null){
+		    if(usuario == null || password == null){
 		    	usuario = (String) session.getAttribute("usuario");
 			   	password = (String) session.getAttribute("password");
 			   	
-			   	out.println(usuario+","+password);
+//			   	out.println(usuario+","+password);
 			   	
-			   	if(usuario == null && password == null) {
-			   		out.println(UserUtils.errorHtml());
+			   	if(usuario == null || password == null) {
+			   		out.println(UserUtils.errorHtml("Login incorrecto","404"));
 			   	}
 		    }  
 		    	if(UserUtils.sessionValid(password, usuario)){
@@ -111,10 +111,10 @@ public class ServletPeliculas extends HttpServlet {
 		    				
 		    			}
 		         	}catch (Exception e) {
-		         		out.println(UserUtils.errorHtml());
+		         		out.println(UserUtils.errorHtml("Login incorrecto","404"));
 					}
 		       	} else { 
-		       		out.println(UserUtils.errorHtml());
+		       		out.println(UserUtils.errorHtml("Login incorrecto","404"));
 		  	 	}
 			 }
 

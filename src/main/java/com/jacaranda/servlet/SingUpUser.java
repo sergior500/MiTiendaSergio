@@ -32,7 +32,7 @@ public class SingUpUser extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append(UserUtils.errorHtml("No encontramos lo que buscas","404"));
 	}
 
 	/**
@@ -47,7 +47,8 @@ public class SingUpUser extends HttpServlet {
 		try {
 			fechaNacimiento = LocalDate.parse(request.getParameter("fechaNacimiento"));
 		}catch (Exception e) {
-			response.getWriter().append((UserUtils.errorHtml()));
+			response.getWriter().append((UserUtils.errorHtml("Error inesperdo","406")));
+			throw e;
 		}
 		String genero = request.getParameter("genero");
 		
@@ -55,13 +56,13 @@ public class SingUpUser extends HttpServlet {
 				&& (apellido != null || !apellido.isEmpty()) && (genero != null || !genero.isEmpty())) {
 			if(UserCRUD.getUser(username)==null && password.length()>=6){
 				UserCRUD.saveUser(username.trim(),UserUtils.encript(password.trim()),nombre.trim(),apellido.trim(),fechaNacimiento,genero.trim(),false);
-				response.sendRedirect("Index.html");
+				response.sendRedirect("Index.jsp");
 			}else{
-				response.getWriter().append((UserUtils.errorHtml()));
+				response.getWriter().append((UserUtils.errorHtml("El usuario ya esta registrado","202")));
 			}
 			
 		}else {
-			response.getWriter().append((UserUtils.errorHtml()));
+			response.getWriter().append((UserUtils.errorHtml("Los campos introducidos son nulos o vacios","401")));
 		}
 		
 		

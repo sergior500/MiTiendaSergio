@@ -23,7 +23,7 @@ public class UserUtils {
 		
 		return test;
 	}
-	public static String errorHtml() {
+	public static String errorHtml(String cadena, String codigo) {
 		//POR HACER ("cambiar metodo para que reciba el error que quieras mostrar")
 		String error= "<!DOCTYPE html>\n"
    				+ "<html>\n"
@@ -34,7 +34,9 @@ public class UserUtils {
    				+ "</head>\n"
    				+ "<body>\n"
    				+ "	<div id=\"div1\" align=\"center\">\n"
-   				+ "	<a href=\"Index.html\"><img src=\"IMAGES/error.jsp\"></a>\n"
+   				+ "<h1>"+cadena+"</h1>"
+   				+ "<h2> Con codigo de error " + codigo + "</h2>"
+   				+ "	<a href=\"Index.jsp\"><img src=\"IMAGES/error.jsp\"></a>\n"
    				+ "	</div>\n"
    				+ "</body>\n"
    				+ "</html>";

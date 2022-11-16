@@ -1,0 +1,991 @@
+{
+	"info": {
+		"_postman_id": "89040dbd-f90c-4f7d-a09d-a664b1e884ca",
+		"name": "ComprobacionesMiTiendaSergio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24293995"
+	},
+	"item": [
+		{
+			"name": "Pruebas LogIn",
+			"item": [
+				{
+					"name": "LogIn en get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/ServletPeliculas?username=sergio&password=sergio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"ServletPeliculas"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "sergio"
+								},
+								{
+									"key": "password",
+									"value": "sergio"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LogIn sin campos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/ServletPeliculas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"ServletPeliculas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LogIn con campos nulos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/ServletPeliculas?username&password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"ServletPeliculas"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": null
+								},
+								{
+									"key": "password",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LogIn campos correctos post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/ServletPeliculas?username=sergio&password=sergio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"ServletPeliculas"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "sergio"
+								},
+								{
+									"key": "password",
+									"value": "sergio"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LogIn solo username",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/ServletPeliculas?username=sergio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"ServletPeliculas"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "sergio"
+								},
+								{
+									"key": "password",
+									"value": "sergio",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LogIn solo password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/ServletPeliculas?password=sergio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"ServletPeliculas"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "sergio",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "sergio"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pruebas añadir pelicula",
+			"item": [
+				{
+					"name": "Añadir pelicula get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/CreateMovie?title=viva la vida5&description=una pelicula entrañable&price=19.99&category=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"CreateMovie"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "viva la vida5"
+								},
+								{
+									"key": "description",
+									"value": "una pelicula entrañable"
+								},
+								{
+									"key": "price",
+									"value": "19.99"
+								},
+								{
+									"key": "category",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Añadir pelicula campos nulos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/formProducto.jsp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"formProducto.jsp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Añadir pelicula campos correctos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/CreateMovie?title=viva la vida5&description=una pelicula entrañable&price=19.99&category=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"CreateMovie"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "viva la vida5"
+								},
+								{
+									"key": "description",
+									"value": "una pelicula entrañable"
+								},
+								{
+									"key": "price",
+									"value": "19.99"
+								},
+								{
+									"key": "category",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Añadir pelicula campos vacios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/CreateMovie?title=&description=&price=&category=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"CreateMovie"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": ""
+								},
+								{
+									"key": "description",
+									"value": ""
+								},
+								{
+									"key": "price",
+									"value": ""
+								},
+								{
+									"key": "category",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Añadir pelicula solo titulo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/CreateMovie?title=viva la vida7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"CreateMovie"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "viva la vida7"
+								},
+								{
+									"key": "description",
+									"value": "una pelicula entrañable",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "19.99",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Añadir pelicula solo descripcion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/CreateMovie?description=una pelicula entrañable",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"CreateMovie"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "viva la vida7",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "una pelicula entrañable"
+								},
+								{
+									"key": "price",
+									"value": "19.99",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Añadir pelicula solo precio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/CreateMovie?price=19.99",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"CreateMovie"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "viva la vida7",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "una pelicula entrañable",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "19.99"
+								},
+								{
+									"key": "category",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Añadir pelicula solo categoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/CreateMovie?category=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"CreateMovie"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "viva la vida7",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "una pelicula entrañable",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "19.99",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pruebas crear usuario",
+			"item": [
+				{
+					"name": "Crear usuario get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/SingUpUser?username=pedrito&password=pedrito&nombre=Pedrito&apellido=PicaPiedras&fechaNacimiento=1995-12-04&genero=male",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"SingUpUser"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "pedrito"
+								},
+								{
+									"key": "password",
+									"value": "pedrito"
+								},
+								{
+									"key": "nombre",
+									"value": "Pedrito"
+								},
+								{
+									"key": "apellido",
+									"value": "PicaPiedras"
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": "1995-12-04"
+								},
+								{
+									"key": "genero",
+									"value": "male"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear usuario campos nulos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/SingUpUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"SingUpUser"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "nuevoUsuario2",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "nuevoUsuario2",
+									"disabled": true
+								},
+								{
+									"key": "nombre",
+									"value": "Pedro",
+									"disabled": true
+								},
+								{
+									"key": "apellido",
+									"value": "PicaPiedras",
+									"disabled": true
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": "1995-12-04",
+									"disabled": true
+								},
+								{
+									"key": "genero",
+									"value": "male",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear usuario campos correctos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/SingUpUser?username=pedrito&password=pedrito&nombre=Pedrito&apellido=PicaPiedras&fechaNacimiento=1995-12-04&genero=male",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"SingUpUser"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "pedrito"
+								},
+								{
+									"key": "password",
+									"value": "pedrito"
+								},
+								{
+									"key": "nombre",
+									"value": "Pedrito"
+								},
+								{
+									"key": "apellido",
+									"value": "PicaPiedras"
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": "1995-12-04"
+								},
+								{
+									"key": "genero",
+									"value": "male"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear usuario campos vacios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/SingUpUser?username=&password=&nombre=&apellido=&fechaNacimiento=&genero=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"SingUpUser"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": ""
+								},
+								{
+									"key": "password",
+									"value": ""
+								},
+								{
+									"key": "nombre",
+									"value": ""
+								},
+								{
+									"key": "apellido",
+									"value": ""
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": ""
+								},
+								{
+									"key": "genero",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear usuario solo usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/SingUpUser?username=pedrito",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"SingUpUser"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "pedrito"
+								},
+								{
+									"key": "password",
+									"value": "pedrito",
+									"disabled": true
+								},
+								{
+									"key": "nombre",
+									"value": "Pedrito",
+									"disabled": true
+								},
+								{
+									"key": "apellido",
+									"value": "PicaPiedras",
+									"disabled": true
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": "1995-12-04",
+									"disabled": true
+								},
+								{
+									"key": "genero",
+									"value": "male",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear usuario solo contraseña",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/SingUpUser?password=pedrito",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"SingUpUser"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "pedrito",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "pedrito"
+								},
+								{
+									"key": "nombre",
+									"value": "Pedrito",
+									"disabled": true
+								},
+								{
+									"key": "apellido",
+									"value": "PicaPiedras",
+									"disabled": true
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": "1995-12-04",
+									"disabled": true
+								},
+								{
+									"key": "genero",
+									"value": "male",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear usuario solo nombre",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/SingUpUser?nombre=Pedrito",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"SingUpUser"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "pedrito",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "pedrito",
+									"disabled": true
+								},
+								{
+									"key": "nombre",
+									"value": "Pedrito"
+								},
+								{
+									"key": "apellido",
+									"value": "PicaPiedras",
+									"disabled": true
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": "1995-12-04",
+									"disabled": true
+								},
+								{
+									"key": "genero",
+									"value": "male",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear usuario solo apellido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/SingUpUser?apellido=PicaPiedras",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"SingUpUser"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "pedrito",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "pedrito",
+									"disabled": true
+								},
+								{
+									"key": "nombre",
+									"value": "Pedrito",
+									"disabled": true
+								},
+								{
+									"key": "apellido",
+									"value": "PicaPiedras"
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": "1995-12-04",
+									"disabled": true
+								},
+								{
+									"key": "genero",
+									"value": "male",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear usuario solo fecha",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/SingUpUser?fechaNacimiento=1995-12-04",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"SingUpUser"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "pedrito",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "pedrito",
+									"disabled": true
+								},
+								{
+									"key": "nombre",
+									"value": "Pedrito",
+									"disabled": true
+								},
+								{
+									"key": "apellido",
+									"value": "PicaPiedras",
+									"disabled": true
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": "1995-12-04"
+								},
+								{
+									"key": "genero",
+									"value": "male",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear usuario solo genero",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PeliculasSergio/SingUpUser?genero=male",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PeliculasSergio",
+								"SingUpUser"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "pedrito",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "pedrito",
+									"disabled": true
+								},
+								{
+									"key": "nombre",
+									"value": "Pedrito",
+									"disabled": true
+								},
+								{
+									"key": "apellido",
+									"value": "PicaPiedras",
+									"disabled": true
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": "1995-12-04",
+									"disabled": true
+								},
+								{
+									"key": "genero",
+									"value": "male"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

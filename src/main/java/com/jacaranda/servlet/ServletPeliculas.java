@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.jacaranda.java.Peliculas;
 import com.jacaranda.java.UserUtils;
+import com.jacaranda.java.CRUD.Carrito;
 import com.jacaranda.java.CRUD.PeliculasCRUD;
 import com.jacaranda.java.CRUD.UserCRUD;
 
@@ -100,6 +101,8 @@ public class ServletPeliculas extends HttpServlet {
 		    			
 		    			List<Peliculas> peliculasList = PeliculasCRUD.loadList();
 		    			
+		    			Carrito c1 = new Carrito();
+		    			
 		    			for(Peliculas pelicula : peliculasList){
 		    				
 		    				out.println("<tr>"
@@ -107,7 +110,8 @@ public class ServletPeliculas extends HttpServlet {
 	    							+ "<td>"+pelicula.getTitulo()+"</td>"
 	    							+ "<td>"+pelicula.getDescripcion()+"</td>"
 	    							+ "<td>"+pelicula.getPrecio()+"</td>"
-	    							+ "<td>"+pelicula.getCategoria().getNombre()+"</td>");
+	    							+ "<td>"+pelicula.getCategoria().getNombre()+"</td>"
+	    							+ "<td><a href=\"AddToShoppingCart\">Añadir al carrito</a></td>");
 		    				
 		    			}
 		         	}catch (Exception e) {

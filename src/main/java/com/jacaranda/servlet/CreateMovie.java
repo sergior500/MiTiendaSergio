@@ -52,8 +52,8 @@ public class CreateMovie extends HttpServlet {
 			response.getWriter().append((UserUtils.errorHtml("Los campos no se han podido comprobar los campos","401")));
 			throw e;
 		};
-		ServletContext context = this.getServletContext(); 
-		RequestDispatcher dispatcher = context.getRequestDispatcher("/ServletPeliculas"); 
+
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/ServletPeliculas"); 
 		
 		
 		if((title != null && !title.isEmpty()) || (description != null && !description.isEmpty()) 

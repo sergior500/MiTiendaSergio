@@ -37,7 +37,7 @@ public class ServletPeliculas extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append(UserUtils.errorHtml("No encuentramos lo que buscas","405"));
+		response.getWriter().append(UserUtils.errorHtml("No encontramos lo que buscas","404"));
 	}
 
 	/**
@@ -69,6 +69,14 @@ public class ServletPeliculas extends HttpServlet {
 		         	session.setAttribute("login", "True");
 		         	session.setAttribute("usuario", usuario);
 		         	session.setAttribute("password",password);
+		         	Carrito c1;
+		         	if(session.getAttribute("ShoppingCart") == null) {
+		         		c1 = new Carrito();
+			         	session.setAttribute("ShoppingCart", c1);
+		         	}else {
+		         		c1 = (Carrito) session.getAttribute("ShoppingCart");
+		         	}
+		         	
 		    		
 		         	
 		         	try {
@@ -80,6 +88,7 @@ public class ServletPeliculas extends HttpServlet {
 		    					+ "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/mvp.css\">"
 		    					+ "</head>"
 		    					+ "<body>"
+		    					+ "<header><h1>Peliculas Romero</h1>  "+c1.getPelisMap().size()+"</header>"
 		    					+"<div>"
 		    					+ "<table>"
 		    					+ "<tr>"
@@ -101,7 +110,7 @@ public class ServletPeliculas extends HttpServlet {
 		    			
 		    			List<Peliculas> peliculasList = PeliculasCRUD.loadList();
 		    			
-		    			Carrito c1 = new Carrito();
+		    			
 		    			
 		    			for(Peliculas pelicula : peliculasList){
 		    				
@@ -111,7 +120,7 @@ public class ServletPeliculas extends HttpServlet {
 	    							+ "<td>"+pelicula.getDescripcion()+"</td>"
 	    							+ "<td>"+pelicula.getPrecio()+"</td>"
 	    							+ "<td>"+pelicula.getCategoria().getNombre()+"</td>"
-	    							+ "<td><a href=\"AddToShoppingCart\">Añadir al carrito</a></td>");
+	    							+ "<td><form action=\"AddToShoppingCart\" method=\"post\"><button type=submit value="+pelicula.getId()+" name=\"id\"'>Añadir al carrito</button></td></form>");
 		    				
 		    			}
 		         	}catch (Exception e) {

@@ -120,7 +120,7 @@ public class ServletPeliculas extends HttpServlet {
 	    							+ "<td>"+pelicula.getDescripcion()+"</td>"
 	    							+ "<td>"+pelicula.getPrecio()+"</td>"
 	    							+ "<td>"+pelicula.getCategoria().getNombre()+"</td>"
-	    							+ "<td><form action=\"AddToShoppingCart\" method=\"post\"><button type=submit value="+pelicula.getId()+" name=\"id\"'>Añadir al carrito</button></td></form>");
+	    							+ "<td><form action=\"AddToShoppingCart\" method=\"post\"><button type=submit value="+pelicula.getId()+" name=\"id\"'>Añadir al carrito</button><input type='number' value='1' name='cantidad'></td></form>");
 		    				
 		    			}
 		         	}catch (Exception e) {

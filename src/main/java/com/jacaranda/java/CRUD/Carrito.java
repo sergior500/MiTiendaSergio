@@ -38,9 +38,8 @@ public class Carrito {
 	
 	public void updateItem(Peliculas peli, Integer cantidad) {
 		if(peli != null && cantidad != null) {
-			if(pelisMap.containsKey(peli)) {
-				pelisMap.put(peli, cantidad);
-			}
+			pelisMap.put(peli, cantidad);
+			
 		}
 	}
 	

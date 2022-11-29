@@ -33,10 +33,7 @@ public class EmptyShoppingCart extends HttpServlet {
 		HttpSession session = request.getSession();
 		Carrito c1 = (Carrito)session.getAttribute("ShoppingCart");
 		
-		c1.removeAllItems();
-		
-		System.out.println(c1.getPelisMap().size());
-		
+		c1.removeAllItems();		
 		
 		session.setAttribute("ShoppingCart", c1);
 		response.sendRedirect("Carrito.jsp");

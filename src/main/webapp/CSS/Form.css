@@ -1,0 +1,105 @@
+@charset "UTF-8";
+
+html,body{  
+	margin: 0;
+	height: 100%;
+}
+
+body {
+  font-family: 'Electrolize', sans-serif;
+  background-color:rgb(216, 217, 207);
+}
+
+#container{
+	padding-top: 13%;
+}
+
+#formDiv{
+	float: center;
+	padding: 1%;
+	margin-left: 40%;
+	margin-right: 40%;
+	background-color:rgb(237, 237, 237) ;
+}
+
+table,th,tr{
+background-color:rgb(255, 135, 135);
+color: rgb(237, 237, 237) ;
+padding: 10px;
+padding-left: 40px;
+padding-right: 40px;
+border-bottom: 1px solid rgb(237, 237, 237);
+border-collapse: collapse;
+text-align:center;
+transition-duration: 0.6s;
+}
+
+.transparent:hover{
+	background-color:rgb(255, 135, 135);
+	transition-duration: 0.6;
+}
+
+th{
+	background-color: rgb(226, 104, 104) ;
+}
+td{
+	padding:10px;
+}
+
+tr:hover {
+	background-color: rgb(237, 237, 237);
+	color: rgb(255, 135, 135);
+  }
+  
+
+.rojo {
+	width: 20%;
+	height: 40px;
+	display: block;
+	position: absolute;
+	z-index: 2;
+}
+  
+.rojo::after {
+	content: "";
+	position: absolute;
+	right: -20px;
+	width: 150%;
+	height: 40px;
+	background: rgb(226, 104, 104);
+	transform: skew(40deg);
+}
+  
+.rosa {
+	background: rgb(255, 135, 135);
+	width: 80%;
+	right: 0px;
+	height: 65px;
+	display: block;
+	position: absolute;
+	z-index: 1;
+}
+  
+.rosa::before {
+	content: "";
+	position: absolute;
+	left: -32px;
+	width: 65px;
+	height: 65px;
+	background: rgb(226, 104, 104);
+	transform: skew(40deg);
+}
+
+#logoutImage{
+	padding:1%;
+	float:right;
+}
+
+#headerImage{
+	float:right;
+	padding-right:3%;
+}
+#title{
+	padding-left: 4%;
+	font-size: 2em;
+}

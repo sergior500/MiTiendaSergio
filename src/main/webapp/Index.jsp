@@ -3,13 +3,20 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="/CSS/mvp.css">
+	<link rel="stylesheet" href="CSS/Form.css">
 <meta charset="ISO-8859-1">
 <title>Login</title>
 </head>
 <body>
-	<div id="div-container" align='center'>
-		<div id="login">
+	<div class="encabezado">
+		<div class="rojo"></div>
+  		<div class="rosa">
+				<p><b id ="title">Peliculas Romero</b>
+				<img src="IMAGES/peliculas.png"  width=2% id="headerImage"></p>
+		  </div>
+	</div>
+	<div id="container" align="center">
+        <div id="formDiv">
 			<h1>Log In</h1>
 			
 

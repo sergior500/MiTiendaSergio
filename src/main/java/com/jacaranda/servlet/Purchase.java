@@ -68,17 +68,18 @@ public class Purchase extends HttpServlet {
 			Integer cantidad = Integer.valueOf(request.getParameter(p.getTitulo()));
 			c1.updateItem(p, cantidad);
 			precio = p.getPrecio()*c1.getPelisMap().get(p);
-			USUARIO_PELICULAS_CRUD.saveCarrito(p, user, c1.getFecha() , Math.floor(precio), c1.getPelisMap().get(p));
+			USUARIO_PELICULAS_CRUD.saveCarrito(p, user, c1.getFecha() , Math.round(precio*100.0)/100.0, c1.getPelisMap().get(p));
 			if(p.getStock()>=c1.getPelisMap().get(p)) {
 				PeliculasCRUD.updateMovieStock(p.getId(),c1.getPelisMap().get(p));
-				c1.removeAllItems();
-				RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/ServletPeliculas");
-				dispatcher.forward(request, response);
 			}else {
 				out.println(UserUtils.errorHtml("Stock insuficiente","440"));
 			}
 			
 		}
+		
+		c1.removeAllItems();
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/ServletPeliculas");
+		dispatcher.forward(request, response);
 		
 	}
 

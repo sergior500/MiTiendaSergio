@@ -9,9 +9,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="CSS/mvp.css">
 </head>
 <body>
 	<%if(session.getAttribute("usuario") !=  null){%>
+	<div align="center">
 	<h1>Añadir Pelicula</h1>
             
             <form action="CreateMovie" method="post">
@@ -42,6 +44,6 @@
 	<%}else{%>
 			<%=UserUtils.errorHtml("No se encuentra lo que buscas", "404")%>
 		<%}%>
-	
+	</div>
 </body>
 </html>

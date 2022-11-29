@@ -16,11 +16,9 @@ public class BBDDConnection {
 	public static Session BDSession() {
 		
 		if(sf == null) {
-			try {
+
 				sf = new MetadataSources(sr).buildMetadata().buildSessionFactory();
-			}catch (HibernateException e) {
-				throw new HibernateException("Error de base de datos.");
-			}
+			
 			
 		}
 		if(session == null || !session.isOpen()) {

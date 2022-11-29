@@ -119,8 +119,13 @@ public class ServletPeliculas extends HttpServlet {
 	    							+ "<td>"+pelicula.getTitulo()+"</td>"
 	    							+ "<td>"+pelicula.getDescripcion()+"</td>"
 	    							+ "<td>"+pelicula.getPrecio()+"</td>"
-	    							+ "<td>"+pelicula.getCategoria().getNombre()+"</td>"
-	    							+ "<td><form action=\"AddToShoppingCart\" method=\"post\"><button type=submit value="+pelicula.getId()+" name=\"id\"'>Añadir al carrito</button><input type='number' value='1' name='cantidad'></td></form>");
+	    							+ "<td>"+pelicula.getCategoria().getNombre()+"</td>");
+		    				if(pelicula.getStock()>0) {
+		    					out.println( "<td><form action=\"AddToShoppingCart\" method=\"post\"><button type=submit value="+pelicula.getId()+" name=\"id\"'>Añadir al carrito</button><input type='number' value='1' min='1' max='"+pelicula.getStock()+"' name='cantidad'></td></form>");
+		    				}else {
+		    					out.println( "<td><b>Sin Stock</b></td>");
+		    				}
+	    							
 		    				
 		    			}
 		         	}catch (Exception e) {

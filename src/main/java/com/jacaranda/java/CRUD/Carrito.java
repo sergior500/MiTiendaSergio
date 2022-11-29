@@ -20,25 +20,29 @@ public class Carrito {
 	
 	public void addItem(Peliculas peli) {
 		if(peli != null) {
-			if(pelisMap.containsKey(peli)) {
-				pelisMap.put(peli, pelisMap.get(peli) + 1);
+			if(this.pelisMap.containsKey(peli)) {
+				this.pelisMap.put(peli, pelisMap.get(peli) + 1);
 			}else {
-				pelisMap.put(peli, 1);
+				this.pelisMap.put(peli, 1);
 			}
 		}
 	}
 	
+	public void removeAllItems() {
+		this.pelisMap.clear();
+	}
+	
 	public void removeItem(Peliculas peli) {
 		if(peli != null) {
-			if(pelisMap.containsKey(peli)) {
-				pelisMap.remove(peli);
+			if(this.pelisMap.containsKey(peli)) {
+				this.pelisMap.remove(peli);
 			}
 		}
 	}
 	
 	public void updateItem(Peliculas peli, Integer cantidad) {
 		if(peli != null && cantidad != null) {
-			pelisMap.put(peli, cantidad);
+			this.pelisMap.put(peli, cantidad);
 			
 		}
 	}

@@ -20,26 +20,29 @@ public class Peliculas {
 	@ManyToOne
 	@JoinColumn(name = "id_categoria")
 	private Categoria categoria;
+	private int stock;
 	
 	public Peliculas() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Peliculas(int id, String titulo, String descripcion, double precio, Categoria categoria) {
+	public Peliculas(int id, String titulo, String descripcion, double precio, Categoria categoria, int stock) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.precio = precio;
 		this.categoria = categoria;
+		this.stock = stock;
 	}
 	
-	public Peliculas(String titulo, String descripcion, double precio, Categoria categoria) {
+	public Peliculas(String titulo, String descripcion, double precio, Categoria categoria,int stock) {
 		super();
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.precio = precio;
 		this.categoria = categoria;
+		this.stock = stock;
 	}
 
 	public int getId() {
@@ -49,7 +52,15 @@ public class Peliculas {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	
+	public int getStock() {
+		return stock;
+	}
+	
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+	
 	public String getTitulo() {
 		return titulo;
 	}

@@ -19,6 +19,7 @@ titulo VARCHAR(150) unique,
 descripcion VARCHAR(1000),
 precio REAL,
 id_categoria INT(6),
+stock INT(5) default 50,
 
 CONSTRAINT PK_PELICULAS PRIMARY KEY (id),
 CONSTRAINT FK_PELICULAS FOREIGN KEY (id_categoria) REFERENCES categoria(id) ON DELETE CASCADE
@@ -41,8 +42,11 @@ CONSTRAINT PK_USUARIO PRIMARY KEY (NombreUsuario)
 CREATE TABLE sergioPeliculas.USUARIO_PELICULAS(
 NombreUsuario VARCHAR(20),
 id_pelicula INT(6),
+cantidad INT(11),
+precio real,
+fecha DATETIME,
 
-CONSTRAINT PK_USUARIO_PELICULAS PRIMARY KEY (id_pelicula,NombreUsuario),
+CONSTRAINT PK_USUARIO_PELICULAS PRIMARY KEY (id_pelicula,NombreUsuario,fecha),
 CONSTRAINT FK_USUARIO_PELICULAS FOREIGN KEY (id_pelicula) REFERENCES peliculas(id) ON DELETE CASCADE,
 CONSTRAINT FK2_USUARIO_PELICULAS FOREIGN KEY (NombreUsuario) REFERENCES USUARIO(NombreUsuario) ON DELETE CASCADE
 );
@@ -67,7 +71,7 @@ insert into sergioPeliculas.categoria (nombre, descripcion) values ('Action', 'p
 
 -- Peliculas
 
-insert into sergioPeliculas.peliculas (titulo, descripcion, precio, id_categoria) values ('My Beautiful Laundrette', 'tellus semper interdum', 16.75, 10);
+insert into sergioPeliculas.peliculas (titulo, descripcion, precio, id_categoria,stock) values ('My Beautiful Laundrette', 'tellus semper interdum', 16.75, 10,1);
 insert into sergioPeliculas.peliculas (titulo, descripcion, precio, id_categoria) values ('Pooh''s Grand Adventure: The Search for Christopher Robin', 'et commodo', 1.55, 5);
 insert into sergioPeliculas.peliculas (titulo, descripcion, precio, id_categoria) values ('Gorky Park', 'dolor', 16.68, 5);
 insert into sergioPeliculas.peliculas (titulo, descripcion, precio, id_categoria) values ('Someone''s Gaze', 'justo aliquam quis turpis', 14.69, 6);

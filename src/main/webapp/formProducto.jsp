@@ -30,6 +30,8 @@
                 		<%}
                 	%>
                 </select>
+                <h4>Stock</h4>
+                <input type="number" min="0" name="stock" required>
 				<br>
 				<br>
 				<button type="submit" name="Sing Up">Create Pelicula</button>

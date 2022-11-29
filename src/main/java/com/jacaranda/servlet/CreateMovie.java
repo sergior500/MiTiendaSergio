@@ -3,7 +3,6 @@ package com.jacaranda.servlet;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,9 +44,11 @@ public class CreateMovie extends HttpServlet {
 		String description = request.getParameter("description");
 		Double number = null;
 		Integer category = null;
+		Integer stock = null;
 		try {
 			number = Double.valueOf(request.getParameter("price"));
 			category = Integer.valueOf(request.getParameter("category"));
+			stock = Integer.valueOf(request.getParameter("stock"));
 		} catch (Exception e) {
 			response.getWriter().append((UserUtils.errorHtml("Los campos no se han podido comprobar los campos","401")));
 			throw e;
@@ -59,7 +60,7 @@ public class CreateMovie extends HttpServlet {
 		if((title != null && !title.isEmpty()) || (description != null && !description.isEmpty()) 
 				|| number != null || category != null) {
 			if(PeliculasCRUD.existMovie(title)) {
-				PeliculasCRUD.saveMovie(title, description, number, CategoriaCRUD.getCategory(category));
+				PeliculasCRUD.saveMovie(title, description, number, CategoriaCRUD.getCategory(category),stock);
 				
 				
 				

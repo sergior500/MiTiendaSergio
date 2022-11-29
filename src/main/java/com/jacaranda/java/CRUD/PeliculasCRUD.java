@@ -7,6 +7,7 @@ import javax.persistence.Query;
 
 import org.hibernate.Session;
 
+
 import com.jacaranda.java.Categoria;
 import com.jacaranda.java.Peliculas;
 
@@ -29,9 +30,9 @@ public class PeliculasCRUD {
 		return movie;
 	}
 	
-	public static void saveMovie(String titulo, String description, double price, Categoria categoria) {
+	public static void saveMovie(String titulo, String description, double price, Categoria categoria, int stock) {
 		Session session = BBDDConnection.BDSession();
-		Peliculas movie = new Peliculas(titulo, description, price, categoria);
+		Peliculas movie = new Peliculas(titulo, description, price, categoria,stock);
 	
 		try {
 			session.getTransaction().begin();
@@ -42,6 +43,22 @@ public class PeliculasCRUD {
 		}
 	
 	}
+	
+	public static void updateMovieStock(int id, Integer stock) {
+		Session session = BBDDConnection.BDSession();
+		Peliculas p = (Peliculas) session.get(Peliculas.class, id);
+		System.out.println(p.getStock()-stock);
+		p.setStock(p.getStock()-stock);
+		System.out.println(p.getStock()-stock);
+		try {
+			session.getTransaction().begin();
+			session.save(p);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+		}
+	}
+	
 	public static boolean existMovie(String title) {
 		boolean res = false;
 		
